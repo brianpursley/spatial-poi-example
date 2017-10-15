@@ -1,0 +1,46 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.table {
+  display: table;
+}
+
+.row {
+  display: table-row;
+}
+
+.row > * {
+  display: table-cell;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  padding: 10px 0;
+}
+
+li > .row > * {
+  border: 1px solid #ccc;
+}
+
+li > .row > label {
+  background: #eee;
+}
+
+.error {
+  background: #fcc;
+  border: 1px solid #900;
+  color: #300;
+  padding: 10px;
+  margin: 10px 0;
+}

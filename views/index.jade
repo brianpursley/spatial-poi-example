@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  h1 Coffee Finder
+  p Welcome to Coffee Finder
+  form(method='post')
+    .table
+      .row
+        label Lat
+        input#lat(name='lat', value=lat)
+      .row
+        label Lng
+        input#lng(name='lng', value=lng)
+      .row
+        div
+        button(type='button', onclick='detectLocation()') Detect Location
+      .row
+        label Radius
+        input#radius(name='radius', value=radius)
+    div
+      button Find Coffee Nearby
+    if error
+      .error= error.message
+  if searchResults
+    ul
+      for searchResult in searchResults
+        li.table
+          .row
+            label Name
+            div= searchResult.name
+          .row
+            label Address
+            div= searchResult.address.street
+          .row
+            label City
+            div= searchResult.address.city
+          .row
+            label State
+            div= searchResult.address.state
+          .row
+            label Zip
+            div= searchResult.address.zip
+  script.
+    function detectLocation() {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          document.getElementById('lat').value = position.coords.latitude;
+          document.getElementById('lng').value = position.coords.longitude;
+        },
+        function(error) {
+          alert(error);
+        }
+      );
+    };
